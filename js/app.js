@@ -1,5 +1,4 @@
 
-
 var Cat = function(data){
 	this.clickCount = ko.observable(data.clickCount);
 	this.name = ko.observable(data.name);
