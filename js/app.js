@@ -1,10 +1,36 @@
+// var initialDogs = [
+// 		{
+//             'name': 'Ralph',
+//             'imgPath': 'img/basset_hound.jpg',
+//             'clickCount': 0
+//         }, {
+//             'name': 'Blorps & Co.',
+//             'imgPath': 'img/two_basset_hounds.jpg',
+//             'clickCount': 0
 
-var Cat = function(data){
+//         }, {
+//             'name': 'Walter',
+//             'imgPath': 'img/walt_couch.jpg',
+//             'clickCount': 0
+//         }, {
+//             'name': 'Shadow',
+//             'imgPath': 'img/shadow.jpg',
+//             'clickCount': 0
+//         }, {
+//             'name': 'Buddy',
+//             'imgPath': 'img/buddy.jpg',
+//             'clickCount': 0
+//         }]
+//     };
+
+
+
+var Dog = function(data){
 	this.clickCount = ko.observable(data.clickCount);
 	this.name = ko.observable(data.name);
 	this.imgSrc = ko.observable(data.imgSrc);
 	this.imgAttribution = ko.observable(data.imgAttribution);
-	this.nicknames = ko.observableArray(data.nicknames)
+	this.nicknames = ko.observableArray(data.nicknames);
 	
 	this.level = ko.computed(function() {
 		if (this.clickCount() < 5) {
@@ -15,17 +41,17 @@ var Cat = function(data){
 			return "Baby";
 		} else if (this.clickCount() < 100){
 			return "Teen" ;
-		} else if (this.clickcount()< 150){
+		} else if (this.clickCount()< 150){
 			return "Adult";
 		}
-	}, this);
+	}, this)};
 	
 
 var ViewModel = function(){
 	var self = this;
-	this.currentCat = ko.observable( new Cat({
+	this.currentDog = ko.observable( new Dog({
 	clickCount: 0,
-	name: 'Tabby',
+	name: 'Petey',
 	imgSrc: 'img/basset_hound.jpg',
 	imgAttribution: 'https://www.flickr.com/photos/big',
 	nicknames: ['Blorps', 'Chubs', 'Bunda'],
