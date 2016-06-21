@@ -65,6 +65,10 @@ var ViewModel = function(){
 	})
 
 	this.currentDog = ko.observable( this.dogList()[0]);
+
+	this.setDog = function(clickedDog){
+		self.currentDog(clickedDog);
+	}
 	
 	this.incrementCounter = function() {
 		this.clickCount(this.clickCount() + 1);
