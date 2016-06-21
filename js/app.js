@@ -1,27 +1,35 @@
-// var initialDogs = [
-// 		{
-//             'name': 'Ralph',
-//             'imgPath': 'img/basset_hound.jpg',
-//             'clickCount': 0
-//         }, {
-//             'name': 'Blorps & Co.',
-//             'imgPath': 'img/two_basset_hounds.jpg',
-//             'clickCount': 0
+var initialDogs = [
+		{
+            'name': 'Ralph',
+            'imgSrc': 'img/basset_hound.jpg',
+            'clickCount': 0,
+            'nicknames': ['Chubs']
+        }, {
+            'name': 'Blorps & Co.',
+            'imgSrc': 'img/two_basset_hounds.jpg',
+            'clickCount': 0,
+            'nicknames': ['Bunda']
 
-//         }, {
-//             'name': 'Walter',
-//             'imgPath': 'img/walt_couch.jpg',
-//             'clickCount': 0
-//         }, {
-//             'name': 'Shadow',
-//             'imgPath': 'img/shadow.jpg',
-//             'clickCount': 0
-//         }, {
-//             'name': 'Buddy',
-//             'imgPath': 'img/buddy.jpg',
-//             'clickCount': 0
-//         }]
-//     };
+
+        }, {
+            'name': 'Walter',
+            'imgSrc': 'img/walt_couch.jpg',
+            'clickCount': 0,
+            'nicknames': ['Baby']
+
+        }, {
+            'name': 'Shadow',
+            'imgSrc': 'img/shadow.jpg',
+            'clickCount': 0,
+            'nicknames': ['DudeBro']
+
+        }, {
+            'name': 'Buddy',
+            'imgSrc': 'img/buddy.jpg',
+            'clickCount': 0,
+            'nicknames': ['Budster']
+
+        }];
 
 
 
@@ -49,13 +57,14 @@ var Dog = function(data){
 
 var ViewModel = function(){
 	var self = this;
-	this.currentDog = ko.observable( new Dog({
-	clickCount: 0,
-	name: 'Petey',
-	imgSrc: 'img/basset_hound.jpg',
-	imgAttribution: 'https://www.flickr.com/photos/big',
-	nicknames: ['Blorps', 'Chubs', 'Bunda'],
-	}) );
+
+	this.dogList = ko.observableArray([]);
+
+	initialDogs.forEach(function(dogItem){
+		self.dogList.push( new Dog(dogItem) );
+	})
+
+	this.currentDog = ko.observable( this.dogList()[0]);
 	
 	this.incrementCounter = function() {
 		this.clickCount(this.clickCount() + 1);
